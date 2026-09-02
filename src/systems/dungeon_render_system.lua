@@ -9,6 +9,12 @@ function DungeonRenderSystem:setDungeon(dungeon)
     self.dungeon = dungeon
 end
 
+function DungeonRenderSystem:init()
+    self.floorAtlas = love.graphics.newImage(
+        "assets/images/dungeon/floor_tiles.png"
+    )
+end
+
 function DungeonRenderSystem:draw()
     if not self.dungeon then
         return
