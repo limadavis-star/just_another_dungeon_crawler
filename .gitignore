@@ -1,0 +1,13 @@
+# macOS metadata
+.DS_Store
+
+# Packaged game files
+*.love
+
+# Build output
+build/
+dist/
+
+# Generated logs and compiled Lua files
+*.log
+*.luac
