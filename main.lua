@@ -7,6 +7,9 @@ local ecsWorld
 
 function love.load()
     ecsWorld = Concord.world()
+
+    local testEntity = Concord.entity(ecsWorld)
+    testEntity:give("position", 100, 100)
 end
 
 function love.draw()
