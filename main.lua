@@ -3,6 +3,7 @@ local Concord = require("libraries.concord")
 -- Components must be registered before entities try to use them.
 require("src.components.position")
 require("src.components.circle")
+require("src.components.velocity")
 
 local Player = require("src.entities.player")
 local CircleRenderSystem = require("src.systems.circle_render_system")
