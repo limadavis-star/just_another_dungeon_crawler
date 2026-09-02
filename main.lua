@@ -19,6 +19,8 @@ local ecsWorld
 local dungeon
 
 function love.load()
+    -- Preserve hard pixel edges when images are scaled.
+    love.graphics.setDefaultFilter("nearest", "nearest")
     ecsWorld = Concord.world()
 
     -- Input must run before movement so velocity is current for this frame.
