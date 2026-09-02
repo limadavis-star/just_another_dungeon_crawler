@@ -13,14 +13,16 @@ function DungeonRenderSystem:init()
     local atlasWidth, atlasHeight =
         self.floorAtlas:getDimensions()
 
-    self.floorQuad = love.graphics.newQuad(
-        0,
-        0,
-        TILE_SIZE,
-        TILE_SIZE,
-        atlasWidth,
-        atlasHeight
-    )
+    self.floorQuads = {
+        love.graphics.newQuad(
+            0,
+            0,
+            TILE_SIZE,
+            TILE_SIZE,
+            atlasWidth,
+            atlasHeight
+        ),
+    }
 end
 
 function DungeonRenderSystem:setDungeon(dungeon)
@@ -53,7 +55,7 @@ function DungeonRenderSystem:draw()
 
                 love.graphics.draw(
                     self.floorAtlas,
-                    self.floorQuad,
+                    self.floorQuads[1],
                     screenX,
                     screenY
                 )
