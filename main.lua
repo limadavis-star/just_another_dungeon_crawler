@@ -4,6 +4,7 @@ local Concord = require("libraries.concord")
 require("src.components.position")
 require("src.components.circle")
 require("src.components.velocity")
+require("src.components.speed")
 
 local Player = require("src.entities.player")
 local MovementSystem = require("src.systems.movement_system")
