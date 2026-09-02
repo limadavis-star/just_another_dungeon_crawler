@@ -8,12 +8,13 @@ require("src.components.speed")
 require("src.components.controllable")
 
 local Player = require("src.entities.player")
+local Dungeon = require("src.world.dungeon")
 local MovementSystem = require("src.systems.movement_system")
 local CircleRenderSystem = require("src.systems.circle_render_system")
 local InputSystem = require("src.systems.input_system")
 
 local ecsWorld
-
+local dungeon
 
 function love.load()
     ecsWorld = Concord.world()
@@ -22,6 +23,8 @@ function love.load()
     ecsWorld:addSystems(InputSystem, MovementSystem, CircleRenderSystem)
 
     Player.create(ecsWorld, 100, 100)
+
+    dungeon = Dungeon.generate(60, 32)
 end
 
 function love.update(dt)
@@ -31,4 +34,9 @@ end
 function love.draw()
     ecsWorld:emit("draw")
     love.graphics.print("Just Another Dungeon Crawler", 20, 20)
+    love.graphics.print(
+        "Dungeon: " .. dungeon.width .. " x " .. dungeon.height,
+        20,
+        40
+    )
 end
