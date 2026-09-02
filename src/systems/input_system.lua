@@ -29,6 +29,16 @@ function InputSystem:update()
             directionY = directionY + 1
         end
 
+        local magnitude = math.sqrt(
+            directionX ^ 2 + directionY ^ 2
+        )
+
+        if magnitude > 0 then
+            -- Normalize the direction so diagonal and straight movement have equal speed.
+            directionX = directionX / magnitude
+            directionY = directionY / magnitude
+        end
+
         entity.velocity.x = directionX * entity.speed.value
         entity.velocity.y = directionY * entity.speed.value
     end
