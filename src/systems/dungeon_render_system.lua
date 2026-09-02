@@ -35,19 +35,29 @@ function DungeonRenderSystem:draw()
     -- rotLove coordinates can start at zero, so pairs is used instead of ipairs.
     for y, row in pairs(self.dungeon.cells) do
         for x, cell in pairs(row) do
+            local screenX = x * TILE_SIZE
+            local screenY = y * TILE_SIZE
+
             if cell == Dungeon.CELL_WALL then
                 love.graphics.setColor(0.22, 0.24, 0.3, 1)
-            else
-                love.graphics.setColor(0.1, 0.11, 0.15, 1)
-            end
 
-            love.graphics.rectangle(
-                "fill",
-                x * TILE_SIZE,
-                y * TILE_SIZE,
-                TILE_SIZE,
-                TILE_SIZE
-            )
+                love.graphics.rectangle(
+                    "fill",
+                    screenX,
+                    screenY,
+                    TILE_SIZE,
+                    TILE_SIZE
+                )
+            else
+                love.graphics.setColor(1, 1, 1, 1)
+
+                love.graphics.draw(
+                    self.floorAtlas,
+                    self.floorQuad,
+                    screenX,
+                    screenY
+                )
+            end
         end
     end
 
