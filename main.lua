@@ -10,13 +10,16 @@ require("src.components.controllable")
 local Player = require("src.entities.player")
 local MovementSystem = require("src.systems.movement_system")
 local CircleRenderSystem = require("src.systems.circle_render_system")
+local InputSystem = require("src.systems.input_system")
 
 local ecsWorld
 
 
 function love.load()
     ecsWorld = Concord.world()
-    ecsWorld:addSystems(CircleRenderSystem, MovementSystem)
+
+    -- Input must run before movement so velocity is current for this frame.
+    ecsWorld:addSystems(InputSystem, MovementSystem, CircleRenderSystem)
 
     Player.create(ecsWorld, 100, 100)
 end
