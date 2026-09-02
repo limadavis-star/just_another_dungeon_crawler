@@ -5,14 +5,26 @@ local TILE_SIZE = 16
 
 local DungeonRenderSystem = Concord.system({})
 
-function DungeonRenderSystem:setDungeon(dungeon)
-    self.dungeon = dungeon
-end
-
 function DungeonRenderSystem:init()
     self.floorAtlas = love.graphics.newImage(
         "assets/images/dungeon/floor_tiles.png"
     )
+
+    local atlasWidth, atlasHeight =
+        self.floorAtlas:getDimensions()
+
+    self.floorQuad = love.graphics.newQuad(
+        0,
+        0,
+        TILE_SIZE,
+        TILE_SIZE,
+        atlasWidth,
+        atlasHeight
+    )
+end
+
+function DungeonRenderSystem:setDungeon(dungeon)
+    self.dungeon = dungeon
 end
 
 function DungeonRenderSystem:draw()
