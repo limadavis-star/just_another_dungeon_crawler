@@ -7,6 +7,7 @@ function Player.create(world, x, y)
         :give("position", x, y)
         :give("velocity", 0, 0)
         :give("speed", 100)
+        :give("controllable")
         :give("circle", 6, 0.35, 0.8, 1, 1)
 
     return entity
